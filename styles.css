@@ -439,9 +439,9 @@ body {
 }
 
 #resume .timeline-ico .icon {
-    margin-top: 1rem;
-    width: 30px;
-    height: 30px;
+    margin-top: 0.1rem;
+    width: 25px;
+    height: 25px;
     color: #fff;
 }
 
@@ -854,6 +854,13 @@ body {
 .c-item:is(video) { background: #000; max-height: 78vh; border-radius: 12px; }
 .carousel[data-aspect="3x4"] .c-item:is(video) { max-height: 82vh; }
 
+.c-item, .c-item iframe, .c-item video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
 /* ===== ปุ่มเลื่อน ===== */
 .c-prev, .c-next {
   position: absolute;
@@ -1062,5 +1069,200 @@ body {
 @media (max-width: 700px) {
   #contact {
     padding: 60px 30px;
+  }
+}
+/* ====== 📱 RESPONSIVE UNIVERSAL LAYOUT ====== */
+
+/* iPad & Tablet */
+@media (max-width: 1024px) {
+  .hero-card {
+    grid-template-columns: 1fr;          /* จัดเรียงเป็นคอลัมน์เดียว */
+    text-align: center;
+    padding: 24px;
+  }
+  .hero-photo img {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;      /* แสดง 2 ช่อง */
+  }
+  #contact {
+    width: 95vw;
+    padding: 60px 30px;
+  }
+}
+
+/* iPhone & Mobile */
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 18px;
+  }
+  .topbar {
+    height: 48px;
+    padding: 6px 14px;
+  }
+  .hero-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px;
+  }
+  .hero-photo img {
+    max-width: 90%;
+    max-height: 220px;
+  }
+  .card-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  #resume .timeline-wrap::before {
+    left: 16px;
+  }
+  #resume .timeline-content {
+    padding-left: 40px;
+  }
+  #contact {
+    width: 94vw;
+    padding: 40px 20px;
+  }
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .modal-dialog {
+    width: 94vw;
+    max-height: 86vh;
+  }
+  .c-item {
+    max-height: 70vh;
+  }
+}
+
+/* Large screens (Desktop refinement) */
+@media (min-width: 1400px) {
+  .section {
+    max-width: 1400px;
+  }
+}
+/* ===== 📱 Mobile fix: About (รูปขึ้นบน ข้อความลงล่าง) ===== */
+@media (max-width: 768px) {
+  .hero-card{
+    display:flex;
+    flex-direction:column;   /* เรียงเป็นแนวตั้ง */
+    align-items:center;
+    gap:18px;
+    text-align:center;
+    padding:24px 16px;
+  }
+  .hero-photo{ order:-1; }   /* ดันรูปขึ้นด้านบน */
+  .hero-photo img{
+    max-width:84%;
+    height:auto;
+    border-radius:20px;
+  }
+  .hero-text{ width:100%; }
+  .hero-text p{ text-align:left; }   /* อ่านง่าย */
+}
+
+/* ===== 📱 Mobile polish: Work Experience timeline ===== */
+@media (max-width: 768px) {
+  /* เส้นหลักของไทม์ไลน์ชิดซ้าย */
+  #resume .timeline-wrap::before{
+    left: 22px;                 /* ระยะห่างจากขอบซ้าย */
+    background: #000;           /* เส้นดำตามเรฟ */
+    opacity: .25;
+  }
+
+  /* 1 บล็อกไทม์ไลน์ = แถวเดียว มี padding เผื่อเส้น/ไอคอน */
+  #resume .timeline-block{
+    position: relative;
+    padding: 12px 0 0px 64px;  /* ซ้าย 64px ให้พ้นเส้นและไอคอน */
+    clear: both;                /* กันซ้อนจาก float เก่า */
+  }
+
+  /* ไอคอนกลมอยู่เหนือเส้นอย่างพอดี */
+  #resume .timeline-ico{
+    width: 32px; height: 32px; line-height: 32px;
+    font-size: 12px;
+    left: 22px;                 /* ให้อยู่กลางเส้น */
+    top: -10px;  
+            /* จิ้มหัวบล็อก */
+    margin-left: 0;
+    transform: translateX(-50%);/* กลางเส้นจริง ๆ */
+    background: #000;           /* ไอคอนพื้นดำ */
+    color: #fff;
+    box-shadow: 0 0px 18px rgba(0,0,0,.15);
+    z-index: 2;
+  }
+
+  /* ยกเลิกการลอยสองฝั่ง → เรียงบน-ล่าง */
+  #resume .timeline-header,
+  #resume .timeline-content{
+    float: none;
+    width: auto;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+  }
+
+  /* ชื่อ + วันที่ ให้เว้นระยะจากเส้น */
+  #resume .timeline-header h3{
+    font-size: 1.125rem;
+    margin: 0 0 .15rem;
+  }
+  #resume .timeline-header p{
+    font-size: .92rem;
+    color: #666;
+    margin: 0 0 .5rem;
+  }
+
+  /* การ์ดเนื้อหา (glass) ขยับมาชิดซ้ายเท่าหัวเรื่อง */
+  #resume .timeline-content{
+    padding: 0;
+  }
+  #resume .timeline-content .glass{
+    margin-left: 0;             /* กันการ์ดล้ำ */
+    padding: 16px 18px;
+    border-radius: 14px;
+    position: relative;
+    z-index: 1;                 /* ลอยอยู่เหนือเส้น */
+  }
+
+  /* ช่องไฟรวมให้ดูโปร่ง */
+  #resume .resume-timeline{ max-width: 620px; }
+}
+
+/* 📱 เล็กมาก (iPhone SE) — ขยับอีกนิด */
+@media (max-width: 380px){
+  #resume .timeline-wrap::before{ left: 18px; }
+  #resume .timeline-ico{ left: 18px; }
+  #resume .timeline-block{ padding-left: 58px; }
+}
+
+/* ===== Responsive Modal Fix for Mobile ===== */
+@media (max-width: 640px) {
+  .modal-dialog {
+    width: 92vw;              /* ลดจาก 94vw เพื่อไม่ติดขอบ */
+    max-height: 85vh;         /* ลดความสูงเพื่อไม่ชนขอบบนล่าง */
+    padding: 12px 14px;       /* ลด padding ภายใน */
+    border-radius: 12px;      /* มุมโค้งน้อยลง */
+  }
+
+  .modal h3 {
+    font-size: 1.1rem;        /* ย่อหัวข้อให้อ่านพอดีจอ */
+    margin-bottom: 10px;
+  }
+
+  .modal-desc {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .carousel .c-item {
+    max-height: 60vh;         /* ลดขนาดภาพ/วิดีโอในมือถือ */
+  }
+
+  .c-prev, .c-next {
+    width: 28px;
+    height: 28px;
   }
 }
