@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pimonpat Talubnga — Portfolio & CV</title>
+<meta name="description" content="Portfolio CV ของ Pimonpat Talubnga — Game Developer, Interactive Media Designer tại CMU. Projects, Skills, Contact.">
+<meta name="keywords" content="Pimonpat Talubnga, Game Developer, Portfolio, CMU, Interactive Media">
+<meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="light">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ใส่ค่า “ของคุณเอง”
+  const EMAILJS_PUBLIC_KEY = "ih_qGi9_HUws7l0s0";
+  const EMAILJS_SERVICE_ID = "service_xqdd08j";
+  const EMAILJS_TEMPLATE_ID = "template_lydqklt";
+
+</script>
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar glass">
+  <div class="menu-top">
+    <h3 class="menu-title">MENU</h3>
+    <button class="close-btn" aria-label="Close menu" data-close-sidebar>&times;</button>
+  </div>
+  <nav aria-label="Sidebar">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#resume" class="nav-link">Experience</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+</aside>
+
+<!-- Topbar -->
+<header class="topbar glass">
+  <div class="left">
+    <button id="hamburger" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">≡</button>
+  </div>
+  <div class="right">
+    <button id="modeToggle" class="mode-toggle" aria-pressed="false" title="Toggle Dark/Light">◐</button>
+  </div>
+</header>
+
+<!-- Intro -->
+<section id="intro" class="intro section appear glass">
+  <div class="intro-inner">
+    <h5 class="eyebrow">Welcome! I'm</h5>
+    <h1 class="title">Pimonpat Talubnga</h1>
+    <p class="subtitle">Interactive Media Developer · Game Programmer</p>
+    <a href="#home" class="btn primary">Explore Now</a>
+  </div>
+</section>
+
+<!-- Hero / Profile Overview -->
+<main id="home" class="hero section appear">
+  <div class="hero-card glass">
+    <div class="hero-text">
+      <h1>About</h1>
+      <!-- ข้อความปรับให้ตรงกับ OldCV -->
+      <p class="lead">
+        I am a Digital Game Development student at the College of Arts, Media and Technology, Chiang Mai University,
+        skilled in game, web, and application development, graphic design, 3D modeling, and office software.
+        Currently a Lead Programmer in multiple game projects, and developer of Web and App prototypes.
+        I have work experience with NOUV Brands as a Content Creator and Graphic Designer, and bring strong coordination and
+        teamwork skills from the CMU Esport Club and international collaboration hackathon projects. I am particularly
+        interested in pursuing a career as an Interactive Media Developer, combining technology and creativity to craft
+        engaging digital experiences.
+      </p>
+      <!-- <div class="hero-actions">
+        <a href="#projects" class="btn primary">See Projects</a>
+        <a href="#contact" class="btn ghost">Contact</a>
+      </div> -->
+    </div>
+    <div class="hero-photo">
+      <img src="images/profile-pic.png" alt="Pimonpat portrait"/>
+    </div>
+  </div>
+
+  <div class="profile-meta glass">
+    <div>
+      <h3>Profile</h3>
+      <p>A creative and skilled developer with a passion for building engaging interactive experiences across various digital platforms.</p>
+      <ul class="meta">
+        <li><strong>Fullname:</strong> Pimonpat Talubnga</li>
+        <li><strong>Education:</strong> Third-Year Student, Major in Digital Game, College of Arts, Media and Technology, Chiang Mai University</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<!-- Skills -->
+<section id="skills" class="section appear">
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="card-grid">
+    <article class="card glass hover-lift">
+      <div class="icon" data-lucide="pen-tool"></div>
+      <h3>Design</h3>
+      <p>UI/UX, brand & marketing visuals, layout systems, and asset pipelines.</p>
+    </article>
+    <article class="card glass hover-lift">
+      <div class="icon" data-lucide="code"></div>
+      <h3>Development</h3>
+      <p>Unity (C#), Unreal, Web (HTML/CSS/JS), Flutter & Firebase prototypes.</p>
+    </article>
+    <article class="card glass hover-lift">
+      <div class="icon" data-lucide="megaphone"></div>
+      <h3>Content</h3>
+      <p>Video editing, motion snippets, and campaign assets for events/brands.</p>
+    </article>
+  </div>
+
+  <h3 class="subsection">Tools & Technologies</h3>
+  <div class="skills-bars">
+    <div class="bar">
+      <label>Photoshop, Illustrator, Figma</label>
+      <div class="track" data-progress="95"><span class="fill"></span></div>
+    </div>
+    <div class="bar">
+      <label>Blender</label>
+      <div class="track" data-progress="80"><span class="fill"></span></div>
+    </div>
+    <div class="bar">
+      <label>Unity (C#) &amp; Unreal</label>
+      <div class="track" data-progress="95"><span class="fill"></span></div>
+    </div>
+    <div class="bar">
+      <label>HTML, CSS, JavaScript, Bootstrap</label>
+      <div class="track" data-progress="75"><span class="fill"></span></div>
+    </div>
+    <div class="bar">
+      <label>Firebase</label>
+      <div class="track" data-progress="50"><span class="fill"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience (timeline) -->
+<section id="resume" class="section appear">
+  <div class="resume-header"><h2>Work Experience</h2></div>
+  <div class="resume-timeline">
+    <div class="timeline-wrap">
+
+      <div class="timeline-block">
+        <div class="timeline-ico"><span class="icon" data-lucide="briefcase"></span></div>
+        <div class="timeline-header">
+          <h3>Content Creator</h3>
+          <p>2025</p>
+        </div>
+        <div class="timeline-content">
+          <div class="glass">
+            <h4>NOUV Brand</h4>
+            <ul>
+              <li>Created online fashion content</li>
+              <li>Edited promotional videos and designed marketing graphics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-ico"><span class="icon" data-lucide="users"></span></div>
+        <div class="timeline-header">
+          <h3>Treasurer, Coordinator &amp; Content Creator</h3>
+          <p>2023 – Present</p>
+        </div>
+        <div class="timeline-content">
+          <div class="glass">
+            <h4>Esport Club, CMU</h4>
+            <ul>
+              <li>Managed club finances and budgeting and coordinated competitive events</li>
+              <li>Designed promotional video and infographics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-ico"><span class="icon" data-lucide="school"></span></div>
+        <div class="timeline-header">
+          <h3>Student Affairs Assistant</h3>
+          <p>2025 – Present</p>
+        </div>
+        <div class="timeline-content">
+          <div class="glass">
+            <h4>College of Arts, Media and Technology (CAMT)</h4>
+            <ul>
+              <li>Managed documentation and coordinated student activities</li>
+              <li>Designed infographics for faculty events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Projects (layoutเดิม แต่ข้อความ/รูปจาก OldCV) -->
+<section id="projects" class="section appear">
+  <h2 class="section-title">My Projects</h2>
+
+  <div class="projects-grid">
+    <!-- 1) Sent It -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-sentit" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/sent-it-thumb.png" alt="Send It Preview"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">Send It</h3>
+              <span class="overlay-type">Delivery Simulation · Unity (C#)</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>Sent It</h4>
+        <p>Delivery-simulation game focusing on packaging, order flow, and warehouse systems.</p>
+      </div>
+    </button>
+
+    <!-- 2) Let Him Cook -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-lethimcook" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/let-him-cook-thumb.png" alt="Let Him Cook Preview"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">Let Him Cook</h3>
+              <span class="overlay-type">Adventure Cooking · Unity (C#)</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>Let Him Cook</h4>
+        <p>Adventure cooking game where players gather ingredients and craft dishes from quest recipes.</p>
+      </div>
+    </button>
+
+    <!-- 3) Tiny Earth Keepers -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-tiny" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/tiny-earth-thumb.png" alt="Tiny Earth Keepers Preview"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">Tiny Earth Keepers</h3>
+              <span class="overlay-type">AR Educational Game</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>Tiny Earth Keepers</h4>
+        <p>AR educational game that teaches kids proper recycling and environmental awareness.</p>
+      </div>
+    </button>
+
+    <!-- 4) FitMe -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-fitme" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/fitme-thumb.png" alt="FitMe Preview"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">FitMe</h3>
+              <span class="overlay-type">AR Fitness App</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>FitMe</h4>
+        <p>AR fitness app using motion tracking and gamification to encourage exercise habits.</p>
+      </div>
+    </button>
+
+    <!-- 5) NOUV -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-nouv" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/nouv.png" alt="Ad graphic for NOUV Brands"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">Ad graphic for NOUV Brands</h3>
+              <span class="overlay-type">Graphic Design · Event Branding</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>Ad graphic for NOUV Brands</h4>
+        <p>Designed promotional materials and product visuals for the NOUV fashion brand.</p>
+      </div>
+    </button>
+
+    <!-- 6) GGJ Poster -->
+    <button class="project card glass hover-lift" data-modal-open="#modal-ggj" aria-haspopup="dialog">
+      <div class="item-wrap">
+        <img src="images/portfolio/ggj-poster-thumb.png" alt="Global Game Jam Poster"/>
+        <span class="overlay">
+          <span class="overlay-table">
+            <span class="overlay-cell">
+              <h3 class="overlay-title">Global Game Jam Poster</h3>
+              <span class="overlay-type">Graphic Design · Faculty Event</span>
+            </span>
+          </span>
+        </span>
+      </div>
+      <div class="folio-caption">
+        <h4>Global Game Jam Poster</h4>
+        <p>Collaborated to create an official event poster with the theme “Lanna”.</p>
+      </div>
+    </button>
+  </div>
+</section>
+
+<!-- ===== Project Modals (ข้อความ/รูปเหมือน OldCV) ===== -->
+<!-- 1. Sent It -->
+<div class="modal" id="modal-sentit" role="dialog" aria-modal="true" aria-labelledby="modal-sentit-title" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="modal-sentit-title">Sent It (2025)</h3>
+
+    <div class="carousel" data-carousel data-aspect="4x3">
+      <button class="c-prev" aria-label="Previous" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <video class="c-item" controls preload="none" playsinline>
+          <source src="videos/1016.mp4" type="video/mp4">
+        </video>
+      </div>
+      <button class="c-next" aria-label="Next" data-carousel-next>›</button>
+    </div>
+
+    <p class="modal-desc">
+      A Delivery Simulation – Puzzle Strategy game. Players work as delivery staff for a mysterious company, tasked with packing,
+      verifying, and delivering packages within time limits.<br><br>
+      Some items are illegal or dangerous, requiring players to decide whether to deliver or dispose of them.<br>
+      — Features include a time management system, realistic physics-based packing, and day–night shop cycles.<br>
+      — Developed with Unity (C#), serving as Lead Programmer, responsible for gameplay mechanics, systems integration, and overall programming.
+    </p>
+    <ul class="tech-list"><li>Unity</li><li>Lead Programmer</li></ul>
+  </div>
+</div>
+
+<!-- 2. Let Him Cook -->
+<div class="modal" id="modal-lethimcook" role="dialog" aria-modal="true" aria-labelledby="modal-lethimcook-title" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="modal-lethimcook-title">Let Him Cook (2024)</h3>
+    <div class="carousel" data-carousel data-aspect="4x3">
+      <button class="c-prev" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <video class="c-item" controls preload="none" playsinline>
+          <source src="videos/LetHimCook.mp4" type="video/mp4">
+        </video>
+      </div>
+      <button class="c-next" data-carousel-next>›</button>
+    </div>
+    <p class="modal-desc">
+      A Cooking Simulation – Adventure RPG game.<br><br>
+      Players take the role of a traveling chef who must collect rare ingredients to complete cooking quests.<br>
+      — Explore maps, hunt monsters, fish, and gather materials to craft dishes within time limits.<br>
+      — Developed with Unity (C#). My role: Lead Programmer — gameplay mechanics, systems integration, overall programming.
+    </p>
+    <ul class="tech-list"><li>Unity</li><li>Lead Programmer</li></ul>
+  </div>
+</div>
+
+<!-- 3. Tiny Earth Keepers -->
+<div class="modal" id="modal-tiny" role="dialog" aria-modal="true" aria-labelledby="modal-tiny-title" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="modal-tiny-title">Tiny Earth Keepers (2025)</h3>
+    <div class="carousel" data-carousel data-aspect="4x3">
+      <button class="c-prev" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <img src="images/portfolio/modals/tiny2.JPG" alt="FitMe 1" class="c-item"/>
+        <img src="images/portfolio/modals/Tiny1.png" alt="FitMe 1" class="c-item"/>
+        <video class="c-item" controls preload="none" playsinline>
+          <source src="videos/TinyGame.mp4" type="video/mp4">
+        </video>
+      </div>
+      <button class="c-next" data-carousel-next>›</button>
+    </div>
+    <p class="modal-desc">
+      Hosted by CAMT, Chiang Mai University & Chung-Ang University.<br><br>
+      — Created an AR educational recycling game teaching children proper waste separation and environmental awareness.<br>
+      — Designed game flow, UI, and AR scanning interaction; prepared presentation materials and prototype demo.<br>
+      — Worked with Thai and Korean participants, improving team coordination and multicultural collaboration.
+    </p>
+    <ul class="tech-list"><li>Unity</li><li>AR</li><li>Hackathon</li></ul>
+  </div>
+</div>
+
+<!-- 4. FitMe -->
+<div class="modal" id="modal-fitme" role="dialog" aria-modal="true" aria-labelledby="modal-fitme-title" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="modal-fitme-title">FitMe – Global Startup Design Thinking Hackathon (2025)</h3>
+    <div class="carousel" data-carousel data-aspect="4x3">
+      <button class="c-prev" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <img src="images/portfolio/modals/FitMe3.png" class="c-item"/>
+                <video class="c-item" controls preload="none" playsinline>
+          <source src="videos/Portfolio Presentation (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <button class="c-next" data-carousel-next>›</button>
+    </div>
+    <p class="modal-desc">
+      Hosted by Chung-Ang University, South Korea.<br><br>
+      — Developed an AR-based fitness app that uses motion tracking to guide correct exercise posture.<br>
+      — Designed interactive mini-games to increase motivation and engagement.<br>
+      — Collaborated with international teammates to integrate business and social impact concepts, focusing on health tech and accessibility.<br>
+      — Strengthened cross-cultural communication, time management, and rapid prototyping within a 48-hour challenge.
+    </p>
+    <ul class="tech-list"><li>Interaction</li><li>AR</li><li>Hackathon</li></ul>
+  </div>
+</div>
+
+<!-- 5. NOUV -->
+<div class="modal" id="modal-nouv" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close>&times;</button>
+    <h3>Ad graphic for NOUV</h3>
+    <div class="carousel" data-carousel data-aspect="3x4">
+      <button class="c-prev" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <img src="images/portfolio/modals/NOUV-1.png" class="c-item" alt="">
+        <img src="images/portfolio/modals/NOUV-2.png" class="c-item" alt="">
+        <img src="images/portfolio/modals/NOUV-3.png" class="c-item" alt="">
+                <video class="c-item" controls preload="none" playsinline>
+          <source src="videos/nouv1.MOV" type="video/mp4">
+        </video>
+      </div>
+      <button class="c-next" data-carousel-next>›</button>
+    </div>
+    <p class="modal-desc">
+ — Produced online fashion content and marketing visuals / Edited promotional videos to enhance audience engagement
+</p>
+  </div>
+</div>
+
+<!-- 6. Global Game Jam Poster -->
+<div class="modal" id="modal-ggj" role="dialog" aria-modal="true" aria-labelledby="modal-ggj-title" aria-hidden="true">
+  <div class="modal-dialog glass">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="modal-ggj-title">Global Game Jam Poster (Theme “Lanna”)</h3>
+    <div class="carousel" data-carousel data-aspect="3x4">
+      <button class="c-prev" data-carousel-prev>‹</button>
+      <div class="c-track" data-carousel-track>
+        <img src="images/portfolio/ggj-poster-thumb.png" alt="GGJ Poster" class="c-item"/>
+      </div>
+      <button class="c-next" data-carousel-next>›</button>
+    </div>
+    <p class="modal-desc">
+      Collaborated with a five-member team to design the event poster at CAMT, CMU, created with Adobe Illustrator.
+    </p>
+    <ul class="tech-list"><li>Graphic Design</li><li>Poster</li></ul>
+  </div>
+</div>
+
+
+
+
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <p class="eyebrow">CONTACT</p>
+    <h2 class="contact-title">I'd Love To Hear From You.</h2>
+    <p class="contact-lead">
+      Whether you have a project in mind, a question, or just want to connect, feel free to reach out.
+    </p>
+
+   <form id="contactForm" class="contact-form" novalidate action="javascript:void(0)">
+      <div class="field">
+        <input type="text" name="name" id="c-name" placeholder="Name" required />
+      </div>
+      <div class="field">
+        <input type="email" name="email" id="c-email" placeholder="Email" required />
+      </div>
+      <div class="field">
+        <input type="text" name="subject" id="c-subject" placeholder="Subject" required />
+      </div>
+      <div class="field">
+        <textarea name="message" id="c-message" placeholder="message" rows="6" required></textarea>
+      </div>
+
+  <button type="submit" class="contact-submit">SUBMIT</button>
+  <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+</form>
+
+ 
+
+  <div class="contact-info">
+    <div class="card">
+      <div class="icon" data-lucide="map-pin"></div>
+      <h4>WHERE TO FIND ME</h4>
+      <p>College of Arts, Media and Technology<br>Chiang Mai University<br>Thailand</p>
+    </div>
+    <div class="card">
+      <div class="icon" data-lucide="mail"></div>
+      <h4>EMAIL ME AT</h4>
+      <p>pimonput_t@cmu.ac.th</p>
+    </div>
+    <div class="card">
+      <div class="icon" data-lucide="phone"></div>
+      <h4>CALL ME AT</h4>
+      <p>(+66) 82 195 4794</p>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <p>© <span id="year"></span> Pimonpat Talubnga</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

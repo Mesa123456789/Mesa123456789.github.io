@@ -1,0 +1,1066 @@
+/* ===== Base, fonts, theme ===== */
+:root {
+    /* Light */
+    --bg: #f6f7fb;
+    --text: #0d0f14;
+    --muted: #61677a;
+    --card: rgba(255, 255, 255, .32);
+    --stroke: rgba(255, 255, 255, .55);
+    --shadow: 0 10px 30px rgba(13, 15, 20, .10);
+
+    /* Accent (pastel gradient) */
+    --grad-1: #ffd1f3;
+    --grad-2: #c9c0ff;
+    --grad-3: #b9efff;
+    --accent: #3b82f6;
+}
+
+body.dark {
+    --bg: #0e1117;
+    --text: #e8eaf2;
+    --muted: #aab0c0;
+    --card: rgba(17, 20, 28, .45);
+    --stroke: rgba(255, 255, 255, .15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+    --accent: #60a5fa;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    color: var(--text);
+    background:
+        radial-gradient(1200px 700px at 10% -10%, var(--grad-1), transparent 60%),
+        radial-gradient(1000px 600px at 90% 0%, var(--grad-2), transparent 60%),
+        radial-gradient(900px 600px at 50% 100%, var(--grad-3), transparent 60%),
+        var(--bg);
+    background-attachment: fixed;
+    line-height: 1.6;
+}
+
+/* ===== Utilities ===== */
+.section {
+    padding: 100px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: clamp(28px, 3vw, 40px);
+    margin: 0 0 24px;
+}
+
+.subsection {
+    margin: 40px 0 16px;
+    font-weight: 600
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 16px;
+    text-decoration: none;
+    border: 1px solid var(--stroke);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .1));
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #8bbcff, #ffb2ec);
+}
+
+.btn.ghost {
+    background: transparent
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .15)
+}
+
+/* ===== Glass card ===== */
+.glass {
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--stroke);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+/* ===== Topbar / Sidebar ===== */
+/* ===== Topbar (fixed glass navbar always visible) ===== */
+/* ===== Compact Fixed Navbar (smaller height) ===== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 18px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* โลโก้เล็กลงนิด */
+.topbar .brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #00000070;
+    line-height: 1;
+}
+
+/* ปุ่ม hamburger และ toggle mode เล็กลงนิด */
+#hamburger,
+.mode-toggle {
+    border: none;
+    background: transparent;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text);
+    padding: 8px;
+    transition: opacity 0.2s ease;
+}
+
+#hamburger:hover,
+.mode-toggle:hover {
+    opacity: 0.7;
+}
+
+/* เว้นที่ให้เนื้อหาไม่ชน navbar */
+body {
+    padding-top: 58px;
+    /* 👈 ลดลงให้พอดีกับความสูงใหม่ */
+}
+
+
+
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 280px;
+    transform: translateX(-100%);
+    padding: 24px;
+    z-index: 2100;
+    transition: transform .3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar.open {
+    transform: translateX(0)
+}
+
+.sidebar .close-btn {
+    align-self: flex-end;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.sidebar .nav-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.sidebar .nav-link:hover {
+    border-color: var(--stroke);
+    background: rgba(255, 255, 255, .08)
+}
+
+/* ===== Sidebar Header Row ===== */
+.menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* MENU ซ้าย / ✕ ขวา */
+  padding: 10px 12px 0 12px;
+  margin-bottom: 10px;
+}
+
+/* MENU text */
+.menu-title {
+  font-size: 1rem;        /* 👈 เท่ากับขนาดกากบาท */
+  font-weight: 700;
+  color: #4163ff;              /* 👈 สีดำ */
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+/* ปุ่ม ✕ */
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 3rem;        /* 👈 เท่ากับ MENU */
+  color: #000;              /* 👈 สีดำ */
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.close-btn:hover {
+  opacity: 0.6;
+}
+
+/* เว้นระยะให้ nav ไม่ขยับจากตำแหน่งเดิม */
+.sidebar nav {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+/* ===== Intro ===== */
+.intro {
+    margin-top: 84px;
+    text-align: center
+}
+
+.intro-inner {
+    padding: 48px
+}
+
+.eyebrow {
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px
+}
+
+.title {
+    font-size: clamp(32px, 4vw, 56px);
+    margin: 0
+}
+
+.subtitle {
+    color: var(--muted);
+    margin: 10px 0 20px
+}
+
+/* ===== Hero ===== */
+.hero-card {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 24px;
+  padding: 36px 40px;             /* ลด padding รอบ ๆ */
+  align-items: center;            /* จัดเนื้อหาให้อยู่กึ่งกลางแนวดิ่ง */
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(31,38,135,0.1);
+}
+
+/* ส่วนข้อความ */
+.hero-text h1 {
+  margin-bottom: 10px;
+}
+.hero-text .lead {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ส่วนรูป */
+.hero-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: auto;               /* ✅ ไม่บังคับสูงเท่าข้อความแล้ว */
+  max-height: 320px;          /* ✅ จำกัดความสูงรวม (ย่อให้สั้นลง) */
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.profile-meta {
+    margin-top: 18px;
+    padding: 20px
+}
+
+.meta {
+    padding-left: 18px
+}
+
+.meta li {
+    margin: 6px 0
+}
+
+/* ===== Cards Grid ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    padding: 22px
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 10px
+}
+
+.hover-lift {
+    transition: transform .2s ease, box-shadow .2s ease
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px)
+}
+
+/* ===== Skill bars ===== */
+.skills-bars {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px
+}
+
+.bar label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted)
+}
+
+.track {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .35);
+    overflow: hidden;
+    border: 1px solid var(--stroke);
+    position: relative;
+}
+
+.fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: linear-gradient(90deg, #7aa8ff, #ff9de0);
+    transition: width 1.2s ease;
+}
+
+/* ===== Timeline ===== */
+/* ===== Resume Timeline (Glassmorphism style, same layout) ===== */
+#resume {
+    padding-top: 8rem;
+    padding-bottom: 7rem;
+}
+
+#resume .resume-header {
+    text-align: center;
+}
+
+#resume .resume-header h2 {
+    color: #000000;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Timeline Wrap */
+#resume .resume-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#resume .timeline-wrap {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 8rem;
+}
+
+/* เส้น timeline (สีดำ เรียบ แบบเรฟ) */
+#resume .timeline-wrap::before {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 100%;
+    background: #000;
+    position: absolute;
+    left: 33%;
+    top: 0;
+    opacity: 1;
+}
+
+/* Timeline Block */
+#resume .timeline-block {
+    position: relative;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Timeline Icon (วงกลมดำเหมือนเรฟ) */
+#resume .timeline-ico {
+    height: 3.8rem;
+    width: 3.8rem;
+    line-height: 4rem;
+    background: #000;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    left: 33%;
+    top: 4rem;
+    margin-left: -1.9rem;
+    font-size: 1.6rem;
+    display: grid;
+    place-items: center;
+    box-shadow: none;
+    border: 2px solid #000;
+}
+
+#resume .timeline-ico .icon {
+    margin-top: 1rem;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+}
+
+/* Left (Title) */
+#resume .timeline-header {
+    float: left;
+    width: 33%;
+    padding-right: 70px;
+    text-align: right;
+}
+
+#resume .timeline-header h3 {
+    margin-bottom: 0.3rem;
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+#resume .timeline-header p {
+    font-size: 1.2rem;
+    color: #777;
+    margin: 0;
+}
+
+/* Right (Content) */
+#resume .timeline-content {
+    margin-left: 33%;
+    padding-left: 60px;
+    line-height: 2;
+}
+
+#resume .timeline-content .glass {
+    background: var(--card, rgba(255, 255, 255, 0.35));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--stroke, rgba(255, 255, 255, 0.4));
+    border-radius: 16px;
+    box-shadow: var(--shadow, 0 10px 25px rgba(0, 0, 0, 0.1));
+    padding: 1.2rem 3rem;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+#resume .timeline-content .glass:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+#resume .timeline-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
+#resume .timeline-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.6rem;
+}
+
+#resume .timeline-content ul {
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    padding-left: 1.2rem;
+}
+
+#resume .timeline-content li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+
+/* Reduce gap between sections */
+#resume .resume-timeline+.resume-timeline {
+    margin-top: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #resume .timeline-wrap::before {
+        left: 2rem;
+    }
+
+    #resume .timeline-ico {
+        left: 2rem;
+        margin-left: -1.9rem;
+    }
+
+    #resume .timeline-header {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+    }
+
+    #resume .timeline-content {
+        margin-left: 0;
+        padding-left: 3rem;
+    }
+}
+
+
+
+/* ===== Education (centered version) ===== */
+/* ===== Education (centered layout + glassmorphism) ===== */
+#education {
+    text-align: center;
+    /* ให้หัวข้อและทุกอย่างอยู่ตรงกลาง */
+}
+
+#education .section-title {
+    text-align: center;
+    /* หัวข้ออยู่กลางแนวตั้ง */
+    margin-bottom: 2rem;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    color: #000000;
+    /* ใช้สีหลักของธีม */
+}
+
+/* กล่องการ์ดเรียน */
+.edu-list {
+    display: flex;
+    justify-content: center;
+    /* จัดให้อยู่กลางแนวนอน */
+    align-items: center;
+    flex-direction: column;
+    /* ซ้อนเป็นแนวตั้ง */
+    gap: 18px;
+    text-align: center;
+    /* จัดข้อความภายในให้กลางด้วย */
+}
+
+.edu {
+    padding: 20px 26px;
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--stroke);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    max-width: 700px;
+    /* กำหนดความกว้างสูงสุดของการ์ด */
+    width: 100%;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.edu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ข้อความภายในการ์ด */
+.edu h3 {
+    font-size: clamp(20px, 2.4vw, 26px);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
+.edu p {
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: var(--muted);
+    margin: 0;
+}
+
+.edu .tag {
+    display: block;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 6px;
+}
+
+
+/* ===== Projects ===== */
+.projects-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.project {
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    overflow: hidden;
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block
+}
+
+.project .project-body {
+    padding: 14px
+}
+
+.project h3 {
+    margin: 6px 0 6px
+}
+
+.project p {
+    margin: 0;
+    color: var(--muted)
+}
+/* ===== Projects: Kards-style placement (image top, caption bottom, hover overlay) ===== */
+
+/* จาก 3 คอลัมน์ -> 2 คอลัมน์ ตาม OldCV */
+.projects-grid{
+  display:grid;
+  gap:16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* โครงห่อรูปแบบ Kards */
+.project { padding:0; text-align:left; border:none; background:transparent; }
+.project .item-wrap{ position:relative; overflow:hidden; border-radius:16px; }
+.project img{
+  width:100%; height:auto; display:block;
+  aspect-ratio: 4 / 3;           /* ให้สัดส่วนภาพคงที่ ดูเนียน */
+  object-fit: cover;              /* เติมเต็มไม่บี้ภาพ */
+}
+
+/* Overlay hover (เหมือน .overlay ใน OldCV) */
+.project .overlay{
+  position:absolute; inset:0;
+  display:block; opacity:0; transition:opacity .25s ease;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,.55));
+}
+.project .overlay-table{ display:table; width:100%; height:100%; }
+.project .overlay-cell{ display:table-cell; vertical-align:middle; text-align:center; padding:12px; }
+.project .overlay-title{ color:#fff; margin:0 0 4px; font-weight:700; font-size:1.1rem; }
+.project .overlay-type{ color:#e8e8e8; font-size:.9rem; }
+
+.project .item-wrap:hover .overlay{ opacity:1; }
+
+/* Caption ใต้รูป (เหมือน .folio-caption เดิม) */
+.project .folio-caption{
+  padding:12px 6px 2px;
+}
+.project .folio-caption h4{
+  margin:6px 0 4px; font-weight:700; font-size:1.05rem; color:var(--text);
+}
+.project .folio-caption p{
+  margin:0; color:var(--muted); font-size:.95rem;
+}
+
+/* คงสไตล์ glass ของการ์ด (เฉพาะกรอบล่าง) */
+.project.card.glass{ background:transparent; box-shadow:none; border:none; }
+.project.card.glass .folio-caption{
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive ให้ 1 คอลัมน์บนจอเล็ก */
+@media (max-width: 768px){
+  .projects-grid{ grid-template-columns: 1fr; }
+}
+
+/* ===== Contact ===== */
+.contact-wrap {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1.1fr .9fr;
+}
+
+#contactForm {
+    display: grid;
+    gap: 12px;
+    padding: 18px
+}
+
+#contactForm label span {
+    display: block;
+    font-size: 14px;
+    color: var(--muted)
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    background: rgba(255, 255, 255, .4);
+    color: var(--text);
+}
+
+#contactForm .btn {
+    justify-self: start
+}
+
+.contact-info {
+    padding: 18px
+}
+
+.contact-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px
+}
+
+.contact-info .icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: -3px;
+    margin-right: 6px
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 40px 18px;
+    text-align: center;
+    color: var(--muted)
+}
+
+/* ===== Modal & Carousel (เหมือน Magnific Popup behavior) ===== */
+/* ===== Modal Container ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.45);
+  z-index: 1400;
+}
+.modal.open { display: flex; }
+
+.modal-dialog {
+  position: relative;
+  width: min(980px, 94vw);
+  max-height: 92vh;
+  padding: 18px 20px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.65);   /* ✅ glass ขุ่น */
+  backdrop-filter: blur(20px);
+  box-shadow: 0 6px 22px rgba(0,0,0,.25);
+}
+
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  color: #111;                         /* ✅ เปลี่ยนสีดำ */
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-desc {
+  color: #222;                         /* ✅ เปลี่ยนเป็นดำ */
+  line-height: 1.6;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 12px 0 0;
+  list-style: none;
+}
+.tech-list li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(255,255,255,.6);
+  color: #111;                         /* ✅ สีดำ */
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Carousel shell ===== */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 12px 0 16px;
+  border-radius: 16px;
+  background: transparent;
+}
+
+.c-track {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  transition: transform .45s cubic-bezier(.25,.8,.25,1);
+  will-change: transform;
+}
+
+.c-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 0;
+  display: block;
+  background: transparent;
+}
+
+/* ขนาดสูงอัตโนมัติด้วย aspect ที่เลือก */
+.carousel[data-aspect="4x3"] .c-item { aspect-ratio: 4 / 3; max-height: 78vh; }
+.carousel[data-aspect="3x4"] .c-item { aspect-ratio: 3 / 4; max-height: 82vh; }
+
+/* วิดีโอ (แท็ก video) */
+.c-item:is(video) { background: #000; max-height: 78vh; border-radius: 12px; }
+.carousel[data-aspect="3x4"] .c-item:is(video) { max-height: 82vh; }
+
+/* ===== ปุ่มเลื่อน ===== */
+.c-prev, .c-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .2s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+.c-prev:hover, .c-next:hover { background: rgba(0,0,0,.55); }
+.c-prev { left: 8px; }
+.c-next { right: 8px; }
+.c-prev.disabled, .c-next.disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* ===== Project Card Section ===== */
+.projects-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.project { padding: 0; text-align: left; border: none; background: transparent; }
+.project .item-wrap { position: relative; overflow: hidden; border-radius: 16px; }
+.project img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Overlay hover */
+.project .overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  transition: opacity .25s ease;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.35));
+  backdrop-filter: blur(6px);             /* ✅ ขุ่นขึ้น */
+}
+.project .overlay-table { display: table; width: 100%; height: 100%; }
+.project .overlay-cell { display: table-cell; vertical-align: middle; text-align: center; padding: 12px; }
+.project .overlay-title { color: #fff; margin: 0 0 4px; font-weight: 700; font-size: 1.1rem; }
+.project .overlay-type { color: #e8e8e8; font-size: .9rem; }
+
+.project .item-wrap:hover .overlay { opacity: 1; }
+
+/* Caption ใต้รูป */
+.project .folio-caption {
+  padding: 12px 6px 2px;
+  background: rgba(255, 255, 255, 0.6);    /* ✅ ขุ่นขึ้น */
+  backdrop-filter: blur(14px);
+  border-radius: 0 0 16px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+.project .folio-caption h4 {
+  margin: 6px 0 4px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #111;                            /* ✅ ตัวหนังสือดำ */
+}
+.project .folio-caption p {
+  margin: 0;
+  color: #333;                            /* ✅ สีเทาเข้ม */
+  font-size: .95rem;
+}
+
+/* Responsive Fix */
+@media (max-width: 640px){
+  .modal-dialog { width: min(96vw, 640px); }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ===== CONTACT — Glassmorphism Theme ===== */
+#contact {
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255,255,255,0.25);
+  border-radius: 24px;
+  width: min(980px, 92vw);
+  margin: 80px auto;
+  padding: 80px 60px;
+  box-shadow: 0 8px 32px rgba(31,38,135,0.1);
+  color: #222;
+}
+
+#contact .section-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 38px);
+  color: #111;
+  margin-bottom: 8px;
+}
+
+#contact .section-sub {
+  text-align: center;
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* ===== Form ===== */
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 50px;
+}
+
+#contact label span {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #333;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.3);
+  color: #111;
+  font-size: 1rem;
+  backdrop-filter: blur(6px);
+  transition: border-color .25s, background .25s;
+}
+#contact input::placeholder,
+#contact textarea::placeholder { color: #666; }
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  background: rgba(255,255,255,0.55);
+  border-color: #86a8ff;
+}
+
+/* Submit button glassy gradient */
+#contact button[type="submit"] {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #a0b4ff, #f1b6ff);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 0;
+  letter-spacing: .1em;
+  cursor: pointer;
+  box-shadow: 0 3px 15px rgba(150,150,255,0.25);
+  transition: transform .15s, box-shadow .2s;
+}
+#contact button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(150,150,255,0.35);
+}
+
+/* ===== Bottom info (3 columns glass cards) ===== */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 28px;
+  text-align: center;
+  margin-top: 40px;
+}
+.contact-info .card {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(150,150,255,0.1);
+}
+.contact-info .icon {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #4a5cf6;
+}
+.contact-info h4 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  letter-spacing: .1em;
+  color: #4a5cf6;
+}
+.contact-info p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  #contact {
+    padding: 60px 30px;
+  }
+}
