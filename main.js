@@ -44,6 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', next);
     modeToggle.setAttribute('aria-pressed', next === 'dark');
   });
+  // ===== Set Default Theme to Light =====
+document.addEventListener('DOMContentLoaded', () => {
+  // ลบ dark mode ตอนเปิดเว็บ
+  document.body.classList.remove('dark');
+
+
+});
+
+// ===== Toggle Button (optional) =====
+const toggleBtn = document.getElementById('themeToggle');
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme); // จำโหมดไว้
+  });
+}
 
   /* ===== On-scroll appear ===== */
   const appearEls = document.querySelectorAll('.appear');
@@ -236,20 +253,22 @@ function playOnlyCurrent(slide){
 }
 
 /* ========= MODAL OPEN/CLOSE ========= */
-function openModalById(id){
+function openModalById(id) {
   const modal = document.querySelector(id);
-  if(!modal) return;
+  if (!modal) return;
   modal.classList.add('open');
-
-  // เล่นสไลด์แรกถ้ามี
+  document.body.classList.add('modal-open'); // ✅ ปิด scroll
   const first = modal.querySelector('[data-carousel-track] .c-item');
-  playOnlyCurrent(first);
+  if (first) playOnly(first);
 }
-function closeModal(modal){
-  if(!modal) return;
+
+function closeModal(modal) {
+  if (!modal) return;
   pauseAllIn(modal);
   modal.classList.remove('open');
+  document.body.classList.remove('modal-open'); // ✅ เปิด scroll กลับ
 }
+
 
 // เปิดจากปุ่ม
 document.querySelectorAll('[data-modal-open]').forEach(btn=>{
@@ -348,6 +367,43 @@ document.querySelectorAll('.carousel[data-carousel]').forEach(carousel=>{
   }
 });
 
+/* ===== Scroll lock while modal is open ===== */
+let __scrollY = 0;
+function lockScroll() {
+  // กัน jump: เก็บตำแหน่งแล้วตรึง body ไว้
+  __scrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.top = `-${__scrollY}px`;
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  document.body.classList.add('modal-open'); // เผื่อมีสไตล์เสริม
+}
+function unlockScroll() {
+  document.body.classList.remove('modal-open');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, __scrollY || 0);
+}
+
+/* ผูกกับฟังก์ชันเปิด/ปิด modal ที่มีอยู่แล้ว */
+const __openModalById = openModalById;
+openModalById = function(id) {
+  lockScroll();
+  __openModalById(id);
+};
+const __closeModal = closeModal;
+closeModal = function(modal) {
+  __closeModal(modal);
+  // ปิดเสียง/วิดีโอทำอยู่แล้วใน closeModal เดิม
+  unlockScroll();
+};
+
+/* ป้องกัน scroll พื้นหลังบน iOS */
+document.addEventListener('touchmove', (e) => {
+  const m = document.querySelector('.modal.open');
+  if (!m) return;
+  if (!m.contains(e.target)) e.preventDefault();
+}, { passive: false });
 
 
 
