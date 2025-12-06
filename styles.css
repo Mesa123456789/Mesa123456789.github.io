@@ -779,12 +779,22 @@ body {
   width: min(980px, 94vw);
   max-height: 92vh;
   padding: 18px 20px;
-  overflow: hidden;
+
+  /* ✅ ให้เนื้อหาข้างในเลื่อนได้ */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* เลื่อนลื่นบนมือถือ */
+
   border-radius: 18px;
-  background: rgba(255,255,255,0.65);   /* ✅ glass ขุ่น */
+  background: rgba(255,255,255,0.65);
   backdrop-filter: blur(20px);
   box-shadow: 0 6px 22px rgba(0,0,0,.25);
 }
+.modal-dialog h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
 
 .modal-close {
   position: absolute;
@@ -793,7 +803,7 @@ body {
   border: 0;
   background: transparent;
   color: #111;                         /* ✅ เปลี่ยนสีดำ */
-  font-size: 28px;
+  font-size: 40px;
   cursor: pointer;
 }
 
