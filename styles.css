@@ -1456,3 +1456,25 @@ body.dark .accent {
 body.dark section {
   background: transparent;
 }
+
+@media (max-width: 640px) {
+  .theme-toggle {
+    background: rgba(255,255,255,0.15);  /* โปร่งใส */
+    backdrop-filter: blur(10px);         /* ฟีล glass */
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .theme-toggle:hover {
+    background: rgba(255,255,255,0.25);
+  }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}

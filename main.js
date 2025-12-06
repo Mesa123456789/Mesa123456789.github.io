@@ -464,4 +464,19 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = 'SUBMIT';
     }
   });
+  document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".fade-up");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // แสดงครั้งเดียว
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+});
+
 });
