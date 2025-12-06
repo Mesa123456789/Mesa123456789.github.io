@@ -107,7 +107,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2000;
+    z-index: 1500;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -770,7 +770,7 @@ body {
   align-items: center;
   justify-content: center;
   background: rgba(0,0,0,.45);
-  z-index: 3000;          /* ✅ สูงกว่า topbar แล้ว */
+  z-index: 5000;          /* ✅ สูงกว่า topbar แล้ว */
 }
 
 .modal.open { display: flex; }
@@ -793,6 +793,7 @@ body {
 }
 
 .modal-dialog h3 {
+   padding-right: 40px; 
     font-size: 2rem;
     font-weight: 700;
 }
@@ -1261,9 +1262,11 @@ body {
   }
 
   .modal h3 {
-    font-size: 1.1rem;        /* ย่อหัวข้อให้อ่านพอดีจอ */
+    font-size: 1.1rem;
     margin-bottom: 10px;
+    padding-right: 40px;   /* ✅ กันพื้นที่ขวาในจอเล็ก */
   }
+
 
   .modal-desc {
     font-size: 0.9rem;
