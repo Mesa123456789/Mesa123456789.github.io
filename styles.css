@@ -1478,3 +1478,129 @@ body.dark section {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ================================
+   TOOLS & TECHNOLOGIES (FULL STYLE)
+   Icons layout — auto-center, 2–4 per row
+   ================================ */
+
+/* Layout สำหรับ section รวมหมวดทั้งหมด */
+.skill-groups--icons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* 5 กล่องในแถวเดียว */
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* กล่องของแต่ละหมวด (ใช้ธีม glass เดิม) */
+.skill-groups--icons .skill-group {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+}
+
+/* หัวข้อทุกหมวด – ทำให้เท่ากันทั้งหมด */
+.skill-groups--icons .skill-group h4 {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-strong, #4b5563);
+  text-align: left;
+}
+
+/* ===== ICON GRID: จัดตามจำนวนจริง แถวละ 3–4 อัน เรียงกลางสวย ๆ ===== */
+
+.skill-groups--icons .skill-icon-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* ปรับคอลัมน์อัตโนมัติ */
+  max-width: 360px;        /* จำกัดความกว้าง → ประมาณ 4 คอลัมน์ */
+  margin: 8px auto 0;      /* ให้อยู่กลางใน card */
+  gap: 14px 18px;
+  justify-items: center;   /* โลโก้อยู่ตรงกลางในช่อง */
+}
+
+/* ไอเท็มแต่ละอัน */
+.skill-groups--icons .skill-icon {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted, #6b7280);
+  transition: transform 0.18s ease;
+}
+
+/* โลโก้ภาพ */
+.skill-groups--icons .skill-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.18s ease, filter 0.18s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
+
+/* Hover effect: ขยาย + เงา */
+.skill-groups--icons .skill-icon:hover img,
+.skill-groups--icons .skill-icon:focus-visible img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.28));
+}
+
+.skill-groups--icons .skill-icon:hover,
+.skill-groups--icons .skill-icon:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Focus outline สำหรับ accessibility */
+.skill-groups--icons .skill-icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ================================
+          RESPONSIVE
+   ================================ */
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .skill-groups--icons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Small tablets */
+@media (max-width: 800px) {
+  .skill-groups--icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .skill-groups--icons {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-groups--icons .skill-icon-row {
+    max-width: 100%;
+    grid-template-columns: repeat(3, minmax(60px, 1fr)); /* 3 ต่อแถวบนมือถือ */
+    gap: 12px 10px;
+  }
+
+  .skill-groups--icons .skill-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .skill-groups--icons .skill-icon {
+    width: 60px;
+  }
+}
+
