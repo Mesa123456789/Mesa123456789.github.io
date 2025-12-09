@@ -862,10 +862,18 @@ body {
 /* ขนาดสูงอัตโนมัติด้วย aspect ที่เลือก */
 .carousel[data-aspect="4x3"] .c-item { aspect-ratio: 4 / 3; max-height: 78vh; }
 .carousel[data-aspect="3x4"] .c-item { aspect-ratio: 3 / 4; max-height: 82vh; }
+.carousel[data-aspect="16x9"] .c-item { aspect-ratio: 16 / 9; max-height: 70vh; }
+.c-item:is(video) {
+  width: 100%;
+  height: auto;            /* ให้สูงอัตโนมัติ */
+  max-width: 100%;
+  max-height: 85vh;        /* จำกัดแค่ไม่ให้ล้นหน้าจอ */
+  object-fit: contain;     /* ไม่ให้ภาพบี้ */
+  background: #000;
+  border-radius: 12px;
+}
 
-/* วิดีโอ (แท็ก video) */
-.c-item:is(video) { background: #000; max-height: 78vh; border-radius: 12px; }
-.carousel[data-aspect="3x4"] .c-item:is(video) { max-height: 82vh; }
+.carousel[data-aspect="16x9"] .c-item:is(video) { max-height: 82vh; }
 
 .c-item, .c-item iframe, .c-item video {
   width: 100%;
@@ -1608,7 +1616,7 @@ body.dark section {
   display: inline-block;
   padding: 8px 16px;
   margin-top: 0px;
-  margin-left: 320px;
+  margin-left: 310px;
 
   border-radius: 12px;
   text-decoration: none;
